@@ -41,10 +41,10 @@ body { font-family: var(--font); color: var(--ink); -webkit-font-smoothing: anti
 img { display: block; max-width: 100%; }
 
 /* ---------- 舞台 ---------- */
-.viewport { position: fixed; inset: 0; display: grid; place-items: center; }
+.viewport { position: fixed; inset: 0; overflow: hidden; }
 .stage {
-  position: relative; width: 1920px; height: 1080px; flex: none;
-  transform-origin: center center; background: #fff; overflow: hidden;
+  position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px;
+  transform-origin: center center; transform: translate(-50%, -50%); background: #fff; overflow: hidden;
 }
 .slide {
   position: absolute; inset: 0; background: #fff; overflow: hidden;
@@ -361,7 +361,7 @@ img[data-ri="15"]{content:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgA
   /* 画面に合わせて拡大縮小 */
   function fit() {
     var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-    stage.style.transform = 'scale(' + s + ')';
+    stage.style.transform = 'translate(-50%, -50%) scale(' + s + ')';
   }
   window.addEventListener('resize', fit); fit();
 
